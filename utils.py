@@ -31,3 +31,35 @@ def mapTree(minx,minz,maxx,maxz):
                 zlist.append(zt)
     print(mapeamento)
     return mapeamento
+
+
+def leafs(c,h):
+    maxx = c[0]+3
+    minx = c[0]-3
+    maxz = c[1]+3
+    minz = c[1]-3
+    
+    middle = list(range(minx,maxx+1))
+    print(middle)
+    
+    inicial = 0
+    for y in range(inicial,h):
+        folhas = 0
+        if y % 2 == 0 and y != inicial+2 and y >=2:    
+            maxx-=1
+            minx+=1
+            maxz-=1
+            minz+=1
+        
+        if y >= 2:
+            for x in range(minx,maxx+1):
+                for z in range(minz,maxz+1):
+                #print(x,y,z,end = " ")
+                    if x == c[0] and z == c[1]:
+                        print("wood")
+                    else:
+                        folhas += 1
+                    #print(f"leaf: {folhas}")
+        print(f"Folhas de {y}: {folhas}")
+            
+    pass
