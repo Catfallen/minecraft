@@ -1,7 +1,7 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 import random 
-from utils import mapTree
+from utils import mapTree, leafs
 invetory = {
   "1":"./blocks/grass.png",
   "2":"./blocks/bedrock.png",
@@ -17,17 +17,15 @@ blocks = {
   '5':'./blocks/dirt1.jpg'
 }
 
-
-
-
 texture = blocks['1']
 app = Ursina()
 player = FirstPersonController()
+player.camera_pivot.y = 1.8
 Sky()
 minx = 0
 minz = 0
-maxx = 25
-maxz = 25
+maxx = 16
+maxz = 16
 
 
 mapteste = mapTree(minx,minz,maxx,maxz)
@@ -45,7 +43,7 @@ def ilha():
         texture = blocks['1']
 
 def tree():
-  #Column
+  #Tronco
   for tronco in mapteste:
     texture = blocks['3']
     x = tronco[0]
@@ -54,7 +52,18 @@ def tree():
       box = Button(color=color.white, model='cube', position=(x,y,z),
           texture=texture, parent=scene, origin_y=0.5)
       boxes.append(box)
-
+  
+  for l in mapteste:
+    mapeamento = leafs((l[0],l[1]),l[2],l[3])
+    for leaf in mapeamento:
+      x = leaf[0]
+      y = leaf[1]
+      z = leaf[2]
+      box = Button(color=color.rgba(255,255,255,100), model='cube',position = (x,y+2,z),
+                   texture = blocks['4'],parent=scene,origin_y = 0.5)
+      boxes.append(box)
+    #print(leafs(l))
+  
 ilha()
 tree()
 
@@ -66,9 +75,9 @@ transparent = ['leaf.png']
 def input(key):
   global texture
   if key in '123456789': #Se a key for um numero do inventario
-    if key in invetory.keys():
+    if key in invetory.keys(): #se a chave existe no dicionario
       texture = invetory[key]
-    print(key,texture)
+    print(key,texture) # informa o item atual
   
   
   for box in boxes:
