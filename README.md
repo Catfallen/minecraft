@@ -1,9 +1,10 @@
 # Projeto Minecraft em Python
 
-O projeto começou como uma versão minimalista do Minecraft escrita em apenas **25 linhas de código**, originalmente criada pelo criador de conteúdo **Beau Carnes**:  
-**Github:** https://github.com/beaucarnes/zizyo
+O projeto começou como uma versão minimalista do Minecraft escrita em apenas **25 linhas de código**, originalmente criada pelo criador de conteúdo **Beau Carnes**.
 
-**Youtube:** https://www.youtube.com/watch?v=tONNC-bWSFM
+- **Github:** https://github.com/beaucarnes/zizyo
+
+- **Youtube:** https://www.youtube.com/watch?v=tONNC-bWSFM
 
 Essa versão inicial apresentava apenas um bloco selecionável e uma geração de terreno simples.
 
